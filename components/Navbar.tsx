@@ -3,15 +3,15 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaHome, FaPlaneDeparture, FaKaaba, FaPhoneAlt, FaUsers } from 'react-icons/fa';
+import { FaHome, FaPlaneDeparture, FaKaaba, FaPhoneAlt, FaUsers, FaCalculator } from 'react-icons/fa';
 
 const Navbar = () => {
   return (
     <motion.nav
       className="bg-gradient-to-r from-white to-gray-100 shadow-lg"
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
     >
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Logo */}
@@ -21,34 +21,38 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <ul className="flex space-x-6">
-          <li>
-            <Link href="/" className="flex items-center text-black hover:text-yellow-500 transition duration-300">
-              <FaHome className="mr-2" /> Home
-            </Link>
-          </li>
-          <li>
-            <Link href="/services" className="flex items-center text-black hover:text-yellow-500 transition duration-300">
-              <FaPlaneDeparture className="mr-2" /> Services
-            </Link>
-          </li>
-          <li>
-            <Link href="/about" className="flex items-center text-black hover:text-yellow-500 transition duration-300">
-              <FaUsers className="mr-2" /> About Us
-            </Link>
-          </li>
-          <li>
-            <Link href="/contact" className="flex items-center text-black hover:text-yellow-500 transition duration-300">
-              <FaPhoneAlt className="mr-2" /> Contact Us
-            </Link>
-          </li>
+          {[
+            { href: '/', label: 'Home', icon: FaHome },
+            { href: '/services', label: 'Services', icon: FaPlaneDeparture },
+            { href: '/umrah-calculator', label: 'Umrah Calculator', icon: FaCalculator },
+            { href: '/about', label: 'About Us', icon: FaUsers },
+            { href: '/contact', label: 'Contact Us', icon: FaPhoneAlt },
+          ].map((link, index) => (
+            <motion.li
+              key={link.label}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 + index * 0.3 }} // Staggering effect
+            >
+              <Link href={link.href} className="flex items-center text-black hover:text-yellow-500 transition duration-300">
+                <link.icon className="mr-2" /> {link.label}
+              </Link>
+            </motion.li>
+          ))}
         </ul>
 
         {/* Umrah Login Button */}
-        <Link href="https://www.anwaaralharmain.com/apps/login.php" passHref>
-          <button className="bg-green-600 text-white py-2 px-4 ml-4 rounded hover:bg-green-700 transition duration-300">
-            Umrah Login
-          </button>
-        </Link>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 0.8 }}
+        >
+          <Link href="https://www.anwaaralharmain.com/apps/login.php" passHref>
+            <button className="bg-green-600 text-white py-2 px-4 ml-4 rounded hover:bg-green-700 transition duration-300">
+              Umrah Login
+            </button>
+          </Link>
+        </motion.div>
       </div>
     </motion.nav>
   );

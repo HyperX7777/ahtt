@@ -1,19 +1,20 @@
+'use client';
+
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
-import Services from '../components/Services';
+import ServicesSection from '../components/ServicesSection';  // Import the new ServicesSection component
 import Testimonials from '../components/Testimonials';
 import Footer from '../components/Footer';
-import '../styles/globals.css';
-
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 export default function Home() {
   return (
-    <>
+    <ParallaxProvider>
       <Navbar />
       <Hero />
-      <Services />
+      <ServicesSection />
       <Testimonials />
       <Footer />
-    </>
+    </ParallaxProvider>
   );
 }
