@@ -1,9 +1,9 @@
 import { packages } from '../data/packages';
 
 const selectedPackages = [
-  packages.find(pkg => pkg.category === 'Economy'),
-  packages.find(pkg => pkg.category === 'Economy+'),
-  packages.find(pkg => pkg.category === 'Star'),
+  ...packages.filter(pkg => pkg.category === 'Economy').slice(0, 3),
+  ...packages.filter(pkg => pkg.category === 'Economy+').slice(0, 3),
+  ...packages.filter(pkg => pkg.category === 'Star').slice(0, 3),
 ];
 
 const Services = () => {

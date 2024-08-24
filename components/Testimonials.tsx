@@ -11,14 +11,14 @@ const testimonials = [
 const Testimonials = () => {
   return (
     <motion.section
-      className="py-16 bg-white"
+      className="py-16 bg-[#F4F4F4]" // Background adjusted to Off-White
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
     >
       <div className="container mx-auto px-6 text-center">
         <motion.h2
-          className="text-3xl font-bold text-gray-800 mb-8"
+          className="text-3xl font-bold text-[#2C2C2C] mb-8" // Text color adjusted to Dark Gray
           initial={{ y: 50 }}
           animate={{ y: 0 }}
           transition={{ type: 'spring', stiffness: 120 }}
@@ -29,13 +29,13 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
-              className="p-6 bg-gray-100 rounded-lg shadow-lg"
+              className="p-6 bg-[#FFFFFF] rounded-lg shadow-lg" // Background adjusted to White
               initial={{ y: 50 }}
               animate={{ y: 0 }}
               transition={{ type: 'spring', stiffness: 120, delay: index * 0.2 }}
             >
-              <p className="text-gray-700 italic mb-4">&ldquo;{testimonial.quote}&rdquo;</p>
-              <p className="text-green-600 font-semibold text-right">- {testimonial.name}</p>
+              <p className="text-[#6F6F6F] italic mb-4">&ldquo;{testimonial.quote}&rdquo;</p> {/* Text color adjusted to Warm Gray */}
+              <p className="text-[#B38E5D] font-semibold text-right">- {testimonial.name}</p> {/* Name color adjusted to Gold */}
             </motion.div>
           ))}
         </div>

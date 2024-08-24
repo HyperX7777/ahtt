@@ -36,7 +36,7 @@
     "**/*.mdx",
     "types/tailwindcss.d.ts",
     ".next/types/**/*.ts"
-  ],
+, "pages/api/send-email.js"  ],
   "exclude": [
     "node_modules"
   ]

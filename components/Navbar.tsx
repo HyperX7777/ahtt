@@ -16,7 +16,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Logo */}
         <Link href="/">
-          <Image src="/AHTT.jpg" alt="Anwaar Al Harmain Logo" width={60} height={60} className="cursor-pointer" />
+          <Image src="/AHTT.png" alt="Anwaar Al Harmain Logo" width={60} height={60} className="cursor-pointer" />
         </Link>
 
         {/* Navigation Links */}
@@ -48,7 +48,14 @@ const Navbar = () => {
           transition={{ delay: 2, duration: 0.8 }}
         >
           <Link href="https://www.anwaaralharmain.com/apps/login.php" passHref>
-            <button className="bg-green-600 text-white py-2 px-4 ml-4 rounded hover:bg-green-700 transition duration-300">
+            <button
+              className="py-2 px-4 ml-4 rounded transition duration-300"
+              style={{
+                backgroundColor: '#B38E5D', // Gold
+                color: '#FFFFFF', // White
+                borderColor: '#4A4A4A', // Medium Gray (if you want a border)
+              }}
+            >
               Umrah Login
             </button>
           </Link>

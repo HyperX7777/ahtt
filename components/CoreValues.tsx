@@ -11,13 +11,20 @@ const values = [
 const CoreValues = () => {
   return (
     <motion.section
-      className="py-16 bg-gray-50"
+      className="py-16 bg-[#F4F4F4]" // Off-White background for a clean look
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, delay: 1 }}
     >
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-gray-800 mb-8">Our Core Values</h2>
+        <motion.h2
+          className="text-3xl font-bold mb-8 text-[#2C2C2C]" // Dark Gray for the title
+          initial={{ x: -50 }}
+          animate={{ x: 0 }}
+          transition={{ type: 'spring', stiffness: 100 }}
+        >
+          Our Core Values
+        </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {values.map((value, index) => (
             <motion.div
@@ -27,8 +34,8 @@ const CoreValues = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.3 }}
             >
-              <h3 className="text-xl font-semibold text-green-600 mb-4">{value.title}</h3>
-              <p className="text-gray-700">{value.description}</p>
+              <h3 className="text-xl font-semibold mb-4 text-[#B38E5D]">{value.title}</h3> {/* Gold for the titles */}
+              <p className="text-[#3B3B3B]">{value.description}</p> {/* Charcoal for the description */}
             </motion.div>
           ))}
         </div>
