@@ -25,7 +25,9 @@ export default function RootLayout({
         <link rel="icon" href="/android-chrome-192x192.png" sizes="192x192" />
         <link rel="icon" href="/android-chrome-512x512.png" sizes="512x512" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-gradient-to-b from-gray-200 to-white dark:from-black dark:to-black dark:text-white text-black`}>
+        {children}
+      </body>
     </html>
   );
 }

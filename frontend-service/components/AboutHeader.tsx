@@ -5,14 +5,14 @@ import { motion } from 'framer-motion';
 const AboutHeader = () => {
   return (
     <motion.section
-      className="bg-gradient-to-r from-[#B38E5D] to-[#D2B48C] text-[#FFFFFF] py-16"
+      className="bg-gradient-to-r from-[#B38E5D] to-[#D2B48C] text-white py-16"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: 'easeOut' }}
     >
-      <div className="container mx-auto text-center">
+      <div className="container mx-auto text-center px-4">
         <motion.h1
-          className="text-4xl font-bold mb-4 text-[#2C2C2C]"
+          className="text-4xl md:text-5xl font-bold mb-4 text-[#2C2C2C]"
           initial={{ scale: 0.8 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
@@ -20,7 +20,7 @@ const AboutHeader = () => {
           About Us
         </motion.h1>
         <motion.p
-          className="text-xl text-[#F8F8F8]"
+          className="text-xl md:text-2xl text-[#F8F8F8]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}

@@ -37,7 +37,7 @@ export default function Search() {
                 name="from"
                 value={searchData.from}
                 onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:border-[#B38E5D]"
                 placeholder="City or Airport"
                 required
               />
@@ -49,7 +49,7 @@ export default function Search() {
                 name="to"
                 value={searchData.to}
                 onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:border-[#B38E5D]"
                 placeholder="City or Airport"
                 required
               />
@@ -61,7 +61,7 @@ export default function Search() {
                 name="departureDate"
                 value={searchData.departureDate}
                 onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:border-[#B38E5D]"
                 required
               />
             </div>
@@ -72,7 +72,7 @@ export default function Search() {
                 name="returnDate"
                 value={searchData.returnDate}
                 onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:border-[#B38E5D]"
               />
             </div>
             <div>
@@ -82,7 +82,7 @@ export default function Search() {
                 name="passengers"
                 value={searchData.passengers}
                 onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:border-[#B38E5D]"
                 min="1"
                 required
               />
@@ -93,7 +93,7 @@ export default function Search() {
                 name="travelClass"
                 value={searchData.travelClass}
                 onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:border-[#B38E5D]"
                 required
               >
                 <option value="Economy">Economy</option>
@@ -113,7 +113,7 @@ export default function Search() {
                 name="city"
                 value={searchData.city || ''}
                 onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:border-[#B38E5D]"
                 placeholder="City"
                 required
               />
@@ -125,7 +125,7 @@ export default function Search() {
                 name="checkinDate"
                 value={searchData.checkinDate || ''}
                 onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:border-[#B38E5D]"
                 required
               />
             </div>
@@ -136,7 +136,7 @@ export default function Search() {
                 name="checkoutDate"
                 value={searchData.checkoutDate || ''}
                 onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:border-[#B38E5D]"
                 required
               />
             </div>
@@ -151,7 +151,7 @@ export default function Search() {
               name="country"
               value={searchData.country || ''}
               onChange={handleInputChange}
-              className="w-full p-3 border border-gray-300 rounded-lg"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:border-[#B38E5D]"
               placeholder="Visa for Country"
               required
             />
@@ -165,7 +165,7 @@ export default function Search() {
               name="packageType"
               value={searchData.packageType || ''}
               onChange={handleInputChange}
-              className="w-full p-3 border border-gray-300 rounded-lg"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:border-[#B38E5D]"
               required
             >
               <option value="Economy">Economy</option>
@@ -180,14 +180,17 @@ export default function Search() {
   };
 
   return (
-    <section className="container mx-auto px-6">
-      <h1 className="text-4xl font-bold text-center text-[#2C2C2C] mb-12">Travel Bookings Made Easy</h1>
+    <section className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-[#2C2C2C] mb-8 sm:mb-12">
+        Travel Bookings Made Easy
+      </h1>
 
-      <div className="flex justify-center mb-8 space-x-4">
+      {/* Tab Switcher */}
+      <div className="flex justify-center mb-6 sm:mb-8 space-x-2 sm:space-x-4">
         {['Flights', 'Hotels', 'Visa', 'Umrah Packages'].map((tab) => (
           <button
             key={tab}
-            className={`px-4 py-2 rounded-md ${
+            className={`px-2 sm:px-4 py-1 sm:py-2 rounded-md text-sm sm:text-base lg:text-lg ${
               selectedTab === tab ? 'bg-[#B38E5D] text-white' : 'bg-gray-200 text-gray-600'
             }`}
             onClick={() => setSelectedTab(tab)}
@@ -198,17 +201,17 @@ export default function Search() {
       </div>
 
       <motion.div
-        className="bg-white shadow-lg rounded-lg p-8"
+        className="bg-white shadow-lg rounded-lg p-6 sm:p-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: 'easeOut' }}
       >
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {renderSearchForm()}
-          <div className="md:col-span-2">
+          <div className="col-span-1 sm:col-span-2">
             <motion.button
               type="submit"
-              className="w-full bg-[#B38E5D] text-white py-3 rounded-lg hover:bg-[#D2B48C] transition"
+              className="w-full bg-[#B38E5D] text-white py-2 sm:py-3 rounded-lg hover:bg-[#D2B48C] transition"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

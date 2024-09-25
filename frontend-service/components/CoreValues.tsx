@@ -18,7 +18,7 @@ const CoreValues = () => {
     >
       <div className="container mx-auto px-6">
         <motion.h2
-          className="text-3xl font-bold mb-8 text-[#2C2C2C]" // Dark Gray for the title
+          className="text-3xl md:text-4xl font-bold mb-8 text-[#2C2C2C]" // Dark Gray for the title, responsive
           initial={{ x: -50 }}
           animate={{ x: 0 }}
           transition={{ type: 'spring', stiffness: 100 }}
@@ -34,8 +34,8 @@ const CoreValues = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.3 }}
             >
-              <h3 className="text-xl font-semibold mb-4 text-[#B38E5D]">{value.title}</h3> {/* Gold for the titles */}
-              <p className="text-[#3B3B3B]">{value.description}</p> {/* Charcoal for the description */}
+              <h3 className="text-xl md:text-2xl font-semibold mb-4 text-[#B38E5D]">{value.title}</h3> {/* Gold for the titles */}
+              <p className="text-[#3B3B3B] leading-relaxed">{value.description}</p> {/* Charcoal for the description */}
             </motion.div>
           ))}
         </div>

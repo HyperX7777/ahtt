@@ -16,7 +16,7 @@ const PreviewPackages = () => {
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
           Our Packages
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {previewPackages.map((service, index) => (
             service && (
               <motion.div
@@ -40,7 +40,7 @@ const PreviewPackages = () => {
                 <p className="text-gray-700 mb-6">{service.description}</p>
                 <motion.a
                   href="/services"
-                  className="text-[#B38E5D] hover:text-[#D2B48C] transition"
+                  className="text-[#B38E5D] hover:text-[#D2B48C] transition-all"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

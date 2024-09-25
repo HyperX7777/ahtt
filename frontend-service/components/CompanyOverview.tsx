@@ -12,7 +12,7 @@ const CompanyOverview = () => {
     >
       <div className="container mx-auto px-6">
         <motion.h2
-          className="text-3xl font-bold mb-6 text-[#2C2C2C]"  // Dark Gray for the title
+          className="text-3xl md:text-4xl font-bold mb-6 text-[#2C2C2C]"  // Dark Gray for the title
           initial={{ x: -50 }}
           animate={{ x: 0 }}
           transition={{ type: 'spring', stiffness: 100 }}
@@ -20,7 +20,7 @@ const CompanyOverview = () => {
           Who We Are
         </motion.h2>
         <motion.p
-          className="text-lg leading-relaxed mb-6 text-[#3B3B3B]"  // Charcoal for the text
+          className="text-lg md:text-xl leading-relaxed mb-6 text-[#3B3B3B]"  // Charcoal for the text
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.7, ease: 'easeOut' }}
@@ -28,7 +28,7 @@ const CompanyOverview = () => {
           Anwaar Al Harmain Travel and Tours has been dedicated to providing exceptional travel services to those undertaking the sacred journey of Umrah. Our company is rooted in the principles of trust, integrity, and service excellence, ensuring that your pilgrimage is as comfortable and meaningful as possible.
         </motion.p>
         <motion.p
-          className="text-lg leading-relaxed text-[#3B3B3B]"  // Charcoal for the text
+          className="text-lg md:text-xl leading-relaxed text-[#3B3B3B]"  // Charcoal for the text
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1, ease: 'easeOut' }}

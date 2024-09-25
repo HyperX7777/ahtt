@@ -15,9 +15,9 @@ const Hero = () => {
         },
         {
           children: (
-            <div className="text-center relative z-10">
+            <div className="text-center relative z-10 px-6">
               <motion.h1
-                className="text-5xl font-bold text-white mb-4"
+                className="text-4xl sm:text-5xl font-bold text-white mb-4"
                 initial={{ y: -50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, ease: 'easeOut' }}
@@ -25,7 +25,7 @@ const Hero = () => {
                 Anwaar Al Harmain Travel and Tours
               </motion.h1>
               <motion.p
-                className="text-xl text-gray-300 mb-8"
+                className="text-lg sm:text-xl text-gray-300 mb-8"
                 initial={{ y: -50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}

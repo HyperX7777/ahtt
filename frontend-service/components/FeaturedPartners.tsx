@@ -33,11 +33,14 @@ const FeaturedPartners = () => {
         <p className="text-gray-600 mb-6 text-lg">Domestic & International</p>
         
         <div className="relative flex items-center justify-center overflow-hidden">
-          <button onClick={prevPartner} className="absolute left-0 z-10 p-3 text-gray-600 bg-white rounded-full shadow-md hover:bg-gray-100 transition-all duration-300">
+          <button 
+            onClick={prevPartner} 
+            className="absolute left-0 z-10 p-3 text-gray-600 bg-white rounded-full shadow-md hover:bg-gray-100 transition-all duration-300"
+          >
             <FaChevronLeft />
           </button>
 
-          <div className="flex space-x-8 px-4 overflow-hidden">
+          <div className="flex space-x-8 px-4 overflow-hidden w-full">
             {partners.slice(currentIndex, currentIndex + 5).map((partner, index) => (
               <motion.div
                 key={index}
@@ -49,13 +52,16 @@ const FeaturedPartners = () => {
                 <img
                   src={partner.logo}
                   alt={partner.alt}
-                  className="h-12 object-contain"
+                  className="h-12 w-auto object-contain mx-auto"
                 />
               </motion.div>
             ))}
           </div>
 
-          <button onClick={nextPartner} className="absolute right-0 z-10 p-3 text-gray-600 bg-white rounded-full shadow-md hover:bg-gray-100 transition-all duration:300">
+          <button 
+            onClick={nextPartner} 
+            className="absolute right-0 z-10 p-3 text-gray-600 bg-white rounded-full shadow-md hover:bg-gray-100 transition-all duration-300"
+          >
             <FaChevronRight />
           </button>
         </div>

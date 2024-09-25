@@ -1,4 +1,4 @@
-'use client';  // Add this at the top of your file
+'use client';
 
 import { useState } from 'react';
 
@@ -15,14 +15,31 @@ const UmrahCalculator = () => {
     nights: '',
     transport: '',
     route: '',
+    specialRequests: '', // Additional field for special requests
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const [errors, setErrors] = useState<any>({});
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const validateForm = () => {
+    const newErrors: any = {};
+    if (!formData.adults) newErrors.adults = 'Number of adults is required';
+    if (!formData.city) newErrors.city = 'City is required';
+    if (!formData.checkinDate) newErrors.checkinDate = 'Check-in date is required';
+    if (!formData.nights) newErrors.nights = 'Number of nights is required';
+    return newErrors;
+  };
+
   const handleSubmit = () => {
-    const whatsappLink = `https://wa.me/03364449880?text=Booking%20Details:%0AAdults:%20${formData.adults}%0AInfants:%20${formData.infants}%0AVisa%20Type:%20${formData.visaType}%0ARoom%20Type:%20${formData.roomType}%0ACity:%20${formData.city}%0AHotel:%20${formData.hotel}%0ARooms:%20${formData.rooms}%0ACheck-in%20Date:%20${formData.checkinDate}%0ANights:%20${formData.nights}%0ATransport:%20${formData.transport}%0ARoute:%20${formData.route}`;
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    const whatsappLink = `https://wa.me/03364449880?text=Booking%20Details:%0AAdults:%20${formData.adults}%0AInfants:%20${formData.infants}%0AVisa%20Type:%20${formData.visaType}%0ARoom%20Type:%20${formData.roomType}%0ACity:%20${formData.city}%0AHotel:%20${formData.hotel}%0ARooms:%20${formData.rooms}%0ACheck-in%20Date:%20${formData.checkinDate}%0ANights:%20${formData.nights}%0ATransport:%20${formData.transport}%0ARoute:%20${formData.route}%0ASpecial%20Requests:%20${formData.specialRequests}`;
     window.open(whatsappLink, '_blank');
   };
 
@@ -40,8 +57,9 @@ const UmrahCalculator = () => {
                 name="adults"
                 value={formData.adults}
                 onChange={handleChange}
-                className="w-full border border-gray-300 p-2 rounded"
+                className="w-full border border-gray-300 p-2 rounded focus:ring focus:border-green-500"
               />
+              {errors.adults && <p className="text-red-500 text-sm">{errors.adults}</p>}
             </div>
 
             <div>
@@ -51,7 +69,7 @@ const UmrahCalculator = () => {
                 name="infants"
                 value={formData.infants}
                 onChange={handleChange}
-                className="w-full border border-gray-300 p-2 rounded"
+                className="w-full border border-gray-300 p-2 rounded focus:ring focus:border-green-500"
               />
             </div>
 
@@ -62,7 +80,7 @@ const UmrahCalculator = () => {
                 name="visaType"
                 value={formData.visaType}
                 onChange={handleChange}
-                className="w-full border border-gray-300 p-2 rounded"
+                className="w-full border border-gray-300 p-2 rounded focus:ring focus:border-green-500"
               />
             </div>
 
@@ -73,7 +91,7 @@ const UmrahCalculator = () => {
                 name="roomType"
                 value={formData.roomType}
                 onChange={handleChange}
-                className="w-full border border-gray-300 p-2 rounded"
+                className="w-full border border-gray-300 p-2 rounded focus:ring focus:border-green-500"
               />
             </div>
           </div>
@@ -86,8 +104,9 @@ const UmrahCalculator = () => {
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
-                className="w-full border border-gray-300 p-2 rounded"
+                className="w-full border border-gray-300 p-2 rounded focus:ring focus:border-green-500"
               />
+              {errors.city && <p className="text-red-500 text-sm">{errors.city}</p>}
             </div>
 
             <div>
@@ -97,7 +116,7 @@ const UmrahCalculator = () => {
                 name="hotel"
                 value={formData.hotel}
                 onChange={handleChange}
-                className="w-full border border-gray-300 p-2 rounded"
+                className="w-full border border-gray-300 p-2 rounded focus:ring focus:border-green-500"
               />
             </div>
 
@@ -108,7 +127,7 @@ const UmrahCalculator = () => {
                 name="rooms"
                 value={formData.rooms}
                 onChange={handleChange}
-                className="w-full border border-gray-300 p-2 rounded"
+                className="w-full border border-gray-300 p-2 rounded focus:ring focus:border-green-500"
               />
             </div>
           </div>
@@ -121,8 +140,9 @@ const UmrahCalculator = () => {
                 name="checkinDate"
                 value={formData.checkinDate}
                 onChange={handleChange}
-                className="w-full border border-gray-300 p-2 rounded"
+                className="w-full border border-gray-300 p-2 rounded focus:ring focus:border-green-500"
               />
+              {errors.checkinDate && <p className="text-red-500 text-sm">{errors.checkinDate}</p>}
             </div>
 
             <div>
@@ -132,21 +152,28 @@ const UmrahCalculator = () => {
                 name="nights"
                 value={formData.nights}
                 onChange={handleChange}
-                className="w-full border border-gray-300 p-2 rounded"
+                className="w-full border border-gray-300 p-2 rounded focus:ring focus:border-green-500"
               />
+              {errors.nights && <p className="text-red-500 text-sm">{errors.nights}</p>}
             </div>
 
             <div>
               <label className="block text-gray-700">Select Transport:</label>
-              <input
-                type="text"
+              <select
                 name="transport"
                 value={formData.transport}
                 onChange={handleChange}
-                className="w-full border border-gray-300 p-2 rounded"
-              />
+                className="w-full border border-gray-300 p-2 rounded focus:ring focus:border-green-500"
+              >
+                <option value="">Select Transport</option>
+                <option value="Private Car">Private Car</option>
+                <option value="Bus">Bus</option>
+                <option value="Train">Train</option>
+              </select>
             </div>
+          </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
               <label className="block text-gray-700">Select Route:</label>
               <input
@@ -154,7 +181,18 @@ const UmrahCalculator = () => {
                 name="route"
                 value={formData.route}
                 onChange={handleChange}
-                className="w-full border border-gray-300 p-2 rounded"
+                className="w-full border border-gray-300 p-2 rounded focus:ring focus:border-green-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700">Special Requests:</label>
+              <textarea
+                name="specialRequests"
+                value={formData.specialRequests}
+                onChange={handleChange}
+                className="w-full border border-gray-300 p-2 rounded focus:ring focus:border-green-500"
+                placeholder="Any special requests or instructions"
               />
             </div>
           </div>

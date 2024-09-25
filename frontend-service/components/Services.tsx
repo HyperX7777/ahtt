@@ -13,17 +13,19 @@ const Services = () => {
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
           Featured Umrah Packages
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {selectedPackages.map((service, index) => (
             service ? (
               <div key={index} className="bg-gray-100 p-6 rounded-lg shadow-md">
                 <h3 className="text-xl font-semibold text-green-600 mb-4">
-                  {service.title}
+                  {service.title || 'Package Title'}
                 </h3>
-                <p className="text-gray-700 mb-6">{service.description}</p>
+                <p className="text-gray-700 mb-6">
+                  {service.description || 'Description unavailable at this time.'}
+                </p>
                 <a
-                  href={service.link}
-                  className="text-green-600 hover:text-green-800 transition"
+                  href={service.link || '#'}
+                  className="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-800 transition"
                 >
                   Learn More
                 </a>

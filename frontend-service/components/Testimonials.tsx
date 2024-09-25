@@ -3,15 +3,17 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-// Replace with actual API call to Reviews.io
-const fetchReviews = async () => {
+interface Review {
+  quote: string;
+  name: string;
+  rating: number;
+}
+
+// Mock API call for Reviews.io (replace with the actual API call in production)
+const fetchReviews = async (): Promise<Review[]> => {
   try {
-    const response = await fetch('https://api.reviews.io/merchant/reviews?store=my-store', {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Bearer your-api-key', // Replace with your Reviews.io API Key
-      }
-    });
+    const response = await fetch('/api/get-reviews'); // Use a proxy API instead of directly using the API key in the frontend.
+    if (!response.ok) throw new Error('Failed to fetch reviews');
     const data = await response.json();
     return data.reviews.map((review: any) => ({
       quote: review.review,
@@ -19,18 +21,22 @@ const fetchReviews = async () => {
       rating: review.rating,
     }));
   } catch (error) {
-    console.error("Failed to fetch reviews", error);
+    console.error('Failed to fetch reviews', error);
     return [];
   }
 };
 
 const Testimonials = () => {
-  const [reviews, setReviews] = useState<any[]>([]);
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const getReviews = async () => {
-      const data = await fetchReviews(); // Fetch reviews from API
+      const data = await fetchReviews();
+      if (data.length === 0) setError(true);
       setReviews(data);
+      setLoading(false);
     };
     getReviews();
   }, []);
@@ -52,8 +58,10 @@ const Testimonials = () => {
           What Our Clients Say
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {reviews.length === 0 ? (
+          {loading ? (
             <p className="text-lg text-gray-500">Loading reviews...</p>
+          ) : error ? (
+            <p className="text-lg text-red-500">Failed to load reviews. Please try again later.</p>
           ) : (
             reviews.map((review, index) => (
               <motion.div

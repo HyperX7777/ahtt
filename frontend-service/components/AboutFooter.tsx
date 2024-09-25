@@ -12,76 +12,47 @@ const Footer = () => {
     >
       <div className="container mx-auto text-left">
         <motion.h2
-          className="text-3xl font-bold mb-6"
-          style={{ color: '#B38E5D' }}
-          whileHover={{ scale: 1.05, color: '#D2B48C' }}
+          className="text-3xl font-bold mb-6 text-[#B38E5D] hover:text-[#D2B48C] transition-transform transform hover:scale-105"
           transition={{ duration: 0.3 }}
         >
           Get in Touch
         </motion.h2>
         <motion.p
-          className="mb-3"
-          style={{ color: '#F8F8F8' }}
-          whileHover={{ scale: 1.02, color: '#D2B48C' }}
+          className="mb-3 text-[#F8F8F8] hover:text-[#D2B48C] transition-transform transform hover:scale-102"
           transition={{ duration: 0.3 }}
         >
           If you have any questions or need further information, feel free to contact us.
         </motion.p>
         <motion.p
-          className="mb-2"
-          style={{ color: '#F8F8F8' }}
-          whileHover={{ scale: 1.02, color: '#D2B48C' }}
+          className="mb-2 text-[#F8F8F8] hover:text-[#D2B48C] transition-transform transform hover:scale-102"
           transition={{ duration: 0.3 }}
         >
           <strong>Address:</strong> Near Meezan Bank Kutchary Road, Sialkot.
         </motion.p>
         <motion.p
-          className="mb-2"
-          style={{ color: '#F8F8F8' }}
-          whileHover={{ scale: 1.02, color: '#D2B48C' }}
+          className="mb-2 text-[#F8F8F8] hover:text-[#D2B48C] transition-transform transform hover:scale-102"
           transition={{ duration: 0.3 }}
         >
           <strong>LandLine:</strong> +92-52-4570059
         </motion.p>
         <motion.p
-          className="mb-2"
-          style={{ color: '#F8F8F8' }}
-          whileHover={{ scale: 1.02, color: '#D2B48C' }}
+          className="mb-2 text-[#F8F8F8] hover:text-[#D2B48C] transition-transform transform hover:scale-102"
           transition={{ duration: 0.3 }}
         >
           <strong>Email:</strong> info@anwaaralharmain.com
         </motion.p>
       </div>
+
       {/* Logos Section */}
       <div className="container mx-auto mt-6 flex justify-end items-center space-x-6">
-        <motion.img
-          src="/Commerce.jpg"
-          alt="Sialkot Chamber of Commerce Logo"
-          className="h-10"
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.3 }}
-        />
-        <motion.img
-          src="/IATA.jpg"
-          alt="IATA Logo"
-          className="h-10"
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.3 }}
-        />
-        <motion.img
-          src="/Ministry.jpg"
-          alt="Ministry of Hajj and Umrah Logo"
-          className="h-10"
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.3 }}
-        />
-        <motion.img
-          src="/Tourist.jpg"
-          alt="Department of Tourist Services Logo"
-          className="h-10"
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.3 }}
-        />
+        {['/Commerce.jpg', '/IATA.jpg', '/Ministry.jpg', '/Tourist.jpg'].map((src, index) => (
+          <motion.img
+            key={index}
+            src={src}
+            alt={`Logo ${index + 1}`}
+            className="h-10 object-contain hover:scale-110 transition-transform duration-300"
+          />
+        ))}
       </div>
     </motion.footer>
   );

@@ -3,19 +3,19 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaHome, FaPlaneDeparture, FaKaaba, FaPhoneAlt, FaUsers, FaCalculator } from 'react-icons/fa';
+import { FaHome, FaPlaneDeparture, FaCalculator, FaUsers, FaPhoneAlt } from 'react-icons/fa';
 
 const Navbar = () => {
   return (
     <motion.nav
-      className="bg-gradient-to-r from-white to-gray-100 shadow-lg"
+      className="bg-gradient-to-r from-white to-gray-100 shadow-lg py-4" // Added padding for better spacing
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
     >
-      <div className="container mx-auto flex justify-between items-center p-4">
+      <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <Link href="/">
+        <Link href="/" passHref>
           <Image src="/AHTT.png" alt="Anwaar Al Harmain Logo" width={60} height={60} className="cursor-pointer" />
         </Link>
 
@@ -33,8 +33,9 @@ const Navbar = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 + index * 0.3 }} // Staggering effect
+              className="hover:text-yellow-500 transition duration-300" // Smooth color transition on hover
             >
-              <Link href={link.href} className="flex items-center text-black hover:text-yellow-500 transition duration-300">
+              <Link href={link.href} className="flex items-center text-gray-800">
                 <link.icon className="mr-2" /> {link.label}
               </Link>
             </motion.li>
@@ -49,11 +50,10 @@ const Navbar = () => {
         >
           <Link href="https://www.anwaaralharmain.com/apps/login.php" passHref>
             <button
-              className="py-2 px-4 ml-4 rounded transition duration-300"
+              className="py-2 px-4 rounded transition duration-300 hover:bg-[#D2B48C]" // Gold hover effect
               style={{
                 backgroundColor: '#B38E5D', // Gold
                 color: '#FFFFFF', // White
-                borderColor: '#4A4A4A', // Medium Gray (if you want a border)
               }}
             >
               Umrah Login
