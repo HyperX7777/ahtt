@@ -1,0 +1,23 @@
+name: ahtt 
+
+services:
+  frontend-service:
+    image: frontend-service
+    build:
+      context: ./frontend-service # Use frontend-service directory as the build context 
+      dockerfile: Dockerfile.dev # Use your development Dockerfile
+    volumes:
+      - ./frontend-service:/app # Sync the current local directory with the app directory in the container
+    ports:
+      - "3000:3000" # Expose container port 3000 to host port 3000
+    environment:
+      - NODE_ENV=development # Set the environment to development
+    container_name: frontend-service
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  default:
+    driver: bridge
