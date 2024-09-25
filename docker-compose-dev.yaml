@@ -1,0 +1,24 @@
+# docker-compose.dev.yml
+name: ahtt-dev
+
+services:
+  frontend-service:
+    image: frontend-service:dev
+    build:
+      context: ./frontend-service
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./frontend-service:/app # Sync code for live-reload during development
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    container_name: frontend-service
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  default:
+    driver: bridge

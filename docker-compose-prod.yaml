@@ -1,0 +1,14 @@
+# docker-compose.prod.yml
+name: ahtt-prod
+
+services:
+  frontend-service:
+    image: frontend-service:prod
+    build:
+      context: ./frontend-service
+      dockerfile: Dockerfile.prod
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    container_name: frontend-service

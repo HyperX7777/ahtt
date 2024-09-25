@@ -1,0 +1,22 @@
+# Stage 1: Build the app
+FROM node:18-alpine AS builder
+WORKDIR /app
+
+# Install dependencies
+COPY package.json pnpm-lock.yaml ./
+RUN npm install -g pnpm && pnpm install --frozen-lockfile
+
+# Copy the app files and build the app
+COPY . .
+RUN pnpm run build
+
+# Stage 2: Serve the app
+FROM node:18-alpine AS runner
+WORKDIR /app
+
+# Copy built app from the previous stage
+COPY --from=builder /app ./
+
+# Expose the port and run the app in production
+EXPOSE 3000
+CMD ["pnpm", "start"]
